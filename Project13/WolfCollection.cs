@@ -7,39 +7,36 @@ using System.Collections;
 
 namespace Project13
 {
-    // Клас для роботи з колекцією об'єктів Wolf
     public class WolfCollection
     {
-        // Колекція з простору імен System.Collections (неузагальнена)
-        private ArrayList arrayList = new ArrayList();      // System.Collections
+        private ArrayList arrayList = new ArrayList();     
 
-        // Узагальнена колекція з простору імен System.Collections.Generic
-        private List<Wolf> list = new List<Wolf>();         // System.Collections.Generic
+        private List<Wolf> list = new List<Wolf>();        
 
-        // 🔸 Додавання елемента до ArrayList
+        //Додавання елемента до ArrayList
         public void AddToArrayList(Wolf wolf)
         {
             arrayList.Add(wolf);
         }
 
-        // 🔸 Додавання елемента до List<Wolf>
+        //Додавання елемента до List<Wolf>
         public void AddToGenericList(Wolf wolf)
         {
             list.Add(wolf);
         }
 
-        // 🔸 Відображення інформації про певний елемент у ArrayList
+        //Відображення інформації про певний елемент у ArrayList
         public string GetFromArrayList(int index)
         {
             if (index >= 0 && index < arrayList.Count)
             {
-                Wolf w = (Wolf)arrayList[index]; // Приведення типу з object до Wolf
+                Wolf w = (Wolf)arrayList[index]; //Приведення типу з object до Wolf
                 return w.Info();
             }
             return "Невірний індекс!";
         }
 
-        // 🔸 Відображення інформації про певний елемент у List<Wolf>
+        //Відображення інформації про певний елемент у List<Wolf>
         public string GetFromGenericList(int index)
         {
             if (index >= 0 && index < list.Count)
@@ -49,24 +46,24 @@ namespace Project13
             return "Невірний індекс!";
         }
 
-        // 🔹 Перебір елементів у ArrayList з поверненням Wolf
+        // Перебір елементів у ArrayList з поверненням Wolf
         public IEnumerable<Wolf> IterateArrayList()
         {
             foreach (Wolf w in arrayList)
                 yield return w;
         }
 
-        // 🔹 Перебір елементів у List<Wolf>
+        // Перебір елементів у List<Wolf>
         public IEnumerable<Wolf> IterateGenericList()
         {
             foreach (Wolf w in list)
                 yield return w;
         }
 
-        // 🔸 Отримання кількості елементів у ArrayList
+        //Отримання кількості елементів у ArrayList
         public int CountArrayList() => arrayList.Count;
 
-        // 🔸 Отримання кількості елементів у List<Wolf>
+        //Отримання кількості елементів у List<Wolf>
         public int CountGenericList() => list.Count;
     }
 

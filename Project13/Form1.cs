@@ -17,7 +17,6 @@ namespace Project13
         {
             InitializeComponent();
 
-            // Ініціалізація вовків
             Wolf[] initial = new Wolf[]
             {
                 new Wolf(40, 5, 150, "Арктичний", "Гренландія"),
@@ -31,7 +30,6 @@ namespace Project13
                 collection.AddToGenericList((Wolf)wolf.Clone());
             }
 
-            // Підписка на події радіокнопок
             radioButtonArrayList.CheckedChanged += RadioButton_CheckedChanged;
             radioButtonGenericList.CheckedChanged += RadioButton_CheckedChanged;
 
@@ -68,7 +66,7 @@ namespace Project13
 
                 if (radioButtonArrayList.Checked)
                 {
-                    info = collection.GetFromArrayList(index - 1); // індексація з 0
+                    info = collection.GetFromArrayList(index - 1); //індексація з 0
                     MessageBox.Show("ArrayList:\n" + info);
                 }
                 else if (radioButtonGenericList.Checked)
@@ -150,5 +148,38 @@ namespace Project13
             UpdateListBox();
         }
 
+        private void button1_Click(object sender, EventArgs e)
+        {
+            listBoxWolves.Items.Clear();
+
+            if (radioButtonArrayList.Checked)
+            {
+                int i = 1;
+                int index = 0;
+                foreach (var w in collection.IterateArrayList())
+                {
+                    if (index % 2 == 0) 
+                    {
+                        listBoxWolves.Items.Add($"ArrayList Вовк №{index + 1}:\n{w.Info()}\n");
+                        i++;
+                    }
+                    index++;
+                }
+            }
+            else if (radioButtonGenericList.Checked)
+            {
+                int i = 1;
+                int index = 0;
+                foreach (var w in collection.IterateGenericList())
+                {
+                    if (index % 2 == 0)
+                    {
+                        listBoxWolves.Items.Add($"List Вовк №{index + 1}:\n{w.Info()}\n");
+                        i++;
+                    }
+                    index++;
+                }
+            }
+        }
     }
 }
